@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pokemon Go</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<style type="text/css">
+	body {
+		background-color: #FAFAFA;
+	    font-size: 15px;
+	}
+	#header {
+		text-align: center;
+		padding-top: 10px;
+	    padding-bottom: 10px;
+	    background-color: #fff;
+
+	}
+	#header p {
+		margin-bottom: 0;
+	    font-size: 20px;
+	    font-weight: 600;
+	    line-height: 20px;
+	}
+	#header img {
+		width: 100px;
+		border: 5px solid #0677EF;
+		border-radius: 100px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	#pokedex {
+		text-align: center;
+		padding-top: 10px;
+	    padding-bottom: 10px;
+		background-color: #F2F2F2;
+	}
+	#pokedex .heading h2 {
+		margin-top: 0;
+		font-weight: 600;
+		line-height: 30px;
+	}
+	#pokedex .heading h2 span {
+		cursor: pointer;
+	}
+	#pokedex .heading span {
+	    font-weight: 600;
+	}
+	#pokedex .heading p, #pokedex .col-md-3 p {
+		display: inline-block;
+		font-size: 15px;
+		font-weight: 600;
+		line-height: 15px;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	#pokedex .col-md-3 img {
+		width: 100%;
+		max-width: 215px;		
+	}
+	#pokedex .col-md-3 h4 {
+		margin-top: 0;
+		margin-bottom: 0;
+		font-size: 15px;
+		line-height: 15px;
+		text-transform: uppercase;
+	}
+	#pokedex .heading ~ div {
+		display: none;
+	}
+	#piechart {
+		width: 100%;
+		height: 630px;
+	}
+	#types .heading p {
+		text-align: center;
+	    font-size: 15px;
+	    font-weight: 600;
+	    line-height: 15px;
+	    margin: 0;
+	    padding-top: 10px;
+	    padding-bottom: 10px;
+	    text-transform: uppercase;
+	    background-color: #fff;
+	}
+	#journal {
+		padding-top: 15px;
+		padding-bottom: 15px;
+		background-color: #F2F2F2;
+	}
+	#journal .heading h2 {
+		text-align: center;
+		margin-top: 0;
+		font-weight: 600;
+		line-height: 30px;
+	}
+	#days {
+		text-align: center;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	#days p {
+		margin: 0 auto;
+	    font-size: 20px;
+	    font-weight: 600;
+	    line-height: 46px;
+	    border: 2px solid;
+	    border-radius: 50px;
+	    width: 50px;
+	}
+	#days .finished p {
+		cursor: pointer;
+	}
+	#days .finished p:hover {
+		border-color: #F2F2F2;
+	    color: #F2F2F2;
+	    background: #000; 
+	}
+	#days .unfinished p {
+		border-color: #E6E6E6;
+		color: #E6E6E6;
+		cursor: no-drop;
+	}
+	.heading h3 {
+		margin-top: 10px;
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 20px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.achievements p, .training p, .hatched_eggs p, .evolutions p {
+		margin-top: 0;
+		margin-bottom: 10px;
+		font-size: 15px;
+		line-height: 15px;
+		padding-left: 25px;
+		padding-right: 25px;
+	}
+	.green {
+		color: #00FF00;
+	}
+	.red {
+		color: #FF0000;
+	}
+	.pokemon p, .battles p, .power_ups p, .eggs p, .items p {
+		margin-top: 0;
+		margin-bottom: 10px;
+		font-size: 15px;
+		line-height: 15px;
+		padding-left: 15px;
+		padding-right: 15px;
+		font-weight: 600;
+	}
+	.pokemon span, .battles span, .power_ups span, .eggs span, .items span {
+		padding-left: 10px;
+	    padding-right: 10px;
+	    font-weight: 400;
+	}
+	.run_away img {
+		width: 100%;
+	    padding-left: 25px;
+	    padding-right: 25px;
+	    margin-bottom: 10px;
+	}
+	.pokemon_type {
+		padding: 5px;
+	    border: 1px solid;
+	    border-color: transparent;
+	    margin-left: 1px;
+	    margin-right: 1px;
+	    color: #FFF;
+	    border-radius: 5px;
+	}
+	.my_team img {
+		width: 100%;
+		padding-left: 25px;
+		padding-right: 25px;
+	}
+	.my_team h4 {
+		margin-top: 0;
+		margin-bottom: 0;
+		font-size: 15px;
+		line-height: 15px;
+		text-transform: uppercase;
+		text-align: center;
+	}
+	.my_team p {
+		font-size: 15px;
+		font-weight: 600;
+		line-height: 15px;
+		text-align: center;
+	    margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.battles img {
+		width: 100%;
+	    padding-left: 25px;
+	    padding-right: 25px;
+	    margin-bottom: 10px;
+	}
+	.active {
+		border-color: #E4F5FC !important;
+		background: #E4F5FC !important;
+		color: #000 !important;
+	}
+	.active:hover {
+		border-color: #000 !important;
+	}
+	.day_container {
+		display: none;
+	}
+	#footer {
+		height: 200px;
+		background-color: #F2F2F2;
+	}
+	</style>
+	<script src="js/loader.min.js"></script>
+	<script type="text/javascript">
+	google.charts.load('current',{'packages':['corechart']});
+	google.charts.setOnLoadCallback(drawChart);
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+			['Task','Pokémon'],
+			['Normal',10],
+			['Fighting',1],
+			['Flying',5],
+			['Poison',5],
+			['Ground',1],
+			['Rock',1],
+			['Bug',5],
+			['Ghost',0],
+			['Steel',3],
+			['Fire',1],
+			['Water',7],
+			['Grass',1],
+			['Electric',6],
+			['Psychic',2],
+			['Ice',0],
+			['Dragon',0],
+			['Dark',0],
+			['Fairy',0]
+		]);
+		var options = {
+			colors: ['#a8a878', '#c03028', '#a890f0', '#a040a0', '#e0c068', '#b8a038', '#a8b820', '#705898', '#b8b8d0', '#f08030', '#6890f0', '#78c850', '#f8d030', '#f85888', '#98d8d8', '#7038f8', '#705848', '#ee99ac'],
+			is3D: true
+		};
+		var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		chart.draw(data, options);
+	}
+	</script>
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.min.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="container">
+		<div id="header" class="row">
+			<div class="col-md-12">
+				<p>MariusFOH</p>
+				<img src="img/team_mystic.jpg">
+				<p>START DATE</p>
+				<p>25 July 2016</p>
+			</div>
+		</div>
+		<div id="pokedex" class="row">
+			<div class="row heading">
+				<div class="col-md-12">
+					<h2>Pokédex <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></h2>
+					<p>CAUGHT: 24</p><span>|</span><p>SEEN: 25</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png">
+					<h4>Charmander</h4>
+					<p>Seen: 1</p><span>|</span><p>Caught: 1</p>
+				</div>
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/019.png">
+					<h4>Rattata</h4>
+					<p>Seen: 8</p><span>|</span><p>Caught: 4</p>
+				</div>
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/046.png">
+					<h4>Paras</h4>
+					<p>Seen: 1</p><span>|</span><p>Caught: 1</p>
+				</div>
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/021.png">
+					<h4>Spearow</h4>
+					<p>Seen: 1</p><span>|</span><p>Caught: 1</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/013.png">
+					<h4>Weedle</h4>
+					<p>Seen: 5</p><span>|</span><p>Caught: 3</p>
+				</div>
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/133.png">
+					<h4>Eevee</h4>
+					<p>Seen: 1</p><span>|</span><p>Caught: 1</p>
+				</div>
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/016.png">
+					<h4>Pidgey</h4>
+					<p>Seen: 6</p><span>|</span><p>Caught: 1</p>
+				</div>
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/096.png">
+					<h4>Drowzee</h4>
+					<p>Seen: 1</p><span>|</span><p>Caught: 1</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/017.png">
+					<h4>Pidgeotto</h4>
+					<p>Seen: 1</p><span>|</span><p>Caught: 1</p>
+				</div>
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/098.png">
+					<h4>Krabby</h4>
+					<p>Seen: 2</p><span>|</span><p>Caught: 1</p>
+				</div>
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/041.png">
+					<h4>Zubat</h4>
+					<p>Seen: 3</p><span>|</span><p>Caught: 2</p>
+				</div>
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/060.png">
+					<h4>Poliwag</h4>
+					<p>Seen: 2</p><span>|</span><p>Caught: 2</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/118.png">
+					<h4>Goldeen</h4>
+					<p>Seen: 2</p><span>|</span><p>Caught: 2</p>
+				</div>
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/010.png">
+					<h4>Caterpie</h4>
+					<p>Seen: 1</p><span>|</span><p>Caught: 1</p>
+				</div>
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/029.png">
+					<h4>Nidoran&#9792;</h4>
+					<p>Seen: 1</p><span>|</span><p>Caught: 0</p>
+				</div>
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/100.png">
+					<h4>Voltorb</h4>
+					<p>Seen: 4</p><span>|</span><p>Caught: 2</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/052.png">
+					<h4>Meowth</h4>
+					<p>Seen: 2</p><span>|</span><p>Caught: 2</p>
+				</div>
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/081.png">
+					<h4>Magnemite</h4>
+					<p>Seen: 8</p><span>|</span><p>Caught: 2</p>
+				</div>
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/077.png">
+					<h4>Ponyta</h4>
+					<p>Seen: 1</p><span>|</span><p>Caught: 1</p>
+				</div>
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/075.png">
+					<h4>Graveler</h4>
+					<p>Seen: 1</p><span>|</span><p>Caught: 1</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/116.png">
+					<h4>Horsea</h4>
+					<p>Seen: 1</p><span>|</span><p>Caught: 1</p>
+				</div>
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/079.png">
+					<h4>Slowpoke</h4>
+					<p>Seen: 1</p><span>|</span><p>Caught: 1</p>
+				</div>
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/107.png">
+					<h4>Hitmonchan</h4>
+					<p>Seen: 1</p><span>|</span><p>Caught: 1</p>
+				</div>
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/101.png">
+					<h4>Electrode</h4>
+					<p>Seen: 1</p><span>|</span><p>Caught: 1</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/082.png">
+					<h4>Magneton</h4>
+					<p>Seen: 1</p><span>|</span><p>Caught: 1</p>
+				</div>
+			</div>
+		</div>
+		<div id="types" class="row">
+			<div class="row heading">
+				<div class="col-md-12">
+					<p>Pokémon caught types</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div id="piechart"></div>
+				</div>
+			</div>
+		</div>
+		<div id="journal" class="row">
+			<div class="row heading">
+				<div class="col-md-12">
+					<h2>Journal <i class="fa fa-book" aria-hidden="true"></i></span></h2>
+				</div>
+			</div>
+			<div id="days" class="row">
+				<div class="col-md-1 finished"><p id="day1_trigger">1</p></div>
+				<div class="col-md-1 unfinished"><p>2</p></div>
+				<div class="col-md-1 unfinished"><p>3</p></div>
+				<div class="col-md-1 unfinished"><p>4</p></div>
+				<div class="col-md-1 unfinished"><p>5</p></div>
+				<div class="col-md-1 unfinished"><p>6</p></div>
+				<div class="col-md-1 unfinished"><p>7</p></div>
+				<div class="col-md-1 unfinished"><p>8</p></div>
+				<div class="col-md-1 unfinished"><p>9</p></div>
+				<div class="col-md-1 unfinished"><p>10</p></div>
+				<div class="col-md-1 unfinished"><p>11</p></div>
+				<div class="col-md-1 unfinished"><p>12</p></div>
+			</div>
+			<div class="row">
+				<div id="day1" class="day_container col-md-6">
+					<div class="row heading">
+						<div class="col-md-12">
+							<h3>Achievements <i class="fa fa-trophy" aria-hidden="true"></i></h3>
+						</div>
+					</div>
+					<div class="achievements row">
+						<p>Level - 6</p>
+						<p>PokéCoins - 0</p>
+						<p>Walked - 4.97 km</p>
+						<p>Registered in the Pokedex - 24</p>
+						<p>Captured Pokémon - 35</p>
+						<p>Evolved Pokémon - 0</p>
+						<p>Hatched eggs - 0</p>
+						<p>Visited PokeStops - 50</p>
+						<p>Gym battles won - 2</p>
+						<p>Trained - 0</p>
+					</div>
+					<div class="row heading">
+						<div class="col-md-12">
+							<h3>Pokémon</h3>
+						</div>
+					</div>
+					<div class="pokemon row">
+						<p><span><strong>1.</strong> Charmander</span>|<span>CP</span>-<span>12</span>|<span>HP</span>-<span>10</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>2.</strong> Rattata</span>|<span>CP</span>-<span>10</span>|<span>HP</span>-<span>10</span>|<span class="red">&#x2716;</span>|<span>Days</span>-<span>0</span></p>
+						<p><span><strong>3.</strong> Paras</span>|<span>CP</span>-<span>40</span>|<span>HP</span>-<span>13</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>4.</strong> Spearow</span>|<span>CP</span>-<span>10</span>|<span>HP</span>-<span>10</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>5.</strong> Weedle</span>|<span>CP</span>-<span>14</span>|<span>HP</span>-<span>14</span>|<span class="red">&#x2716;</span>|<span>Days</span>-<span>0</span></p>
+						<p><span><strong>6.</strong> Eevee</span>|<span>CP</span>-<span>76</span>|<span>HP</span>-<span>25</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>7.</strong> Pidgey</span>|<span>CP</span>-<span>43</span>|<span>HP</span>-<span>20</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>8.</strong> Drowzee</span>|<span>CP</span>-<span>14</span>|<span>HP</span>-<span>12</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>9.</strong> Rattata</span>|<span>CP</span>-<span>36</span>|<span>HP</span>-<span>14</span>|<span class="red">&#x2716;</span>|<span>Days</span>-<span>0</span></p>
+						<p><span><strong>10.</strong> Pidgeotto</span>|<span>CP</span>-<span>15</span>|<span>HP</span>-<span>12</span>|<span class="red">&#x2716;</span>|<span>Days</span>-<span>0</span></p>
+						<p><span><strong>11.</strong> Krabby</span>|<span>CP</span>-<span>73</span>|<span>HP</span>-<span>16</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>12.</strong> Rattata</span>|<span>CP</span>-<span>37</span>|<span>HP</span>-<span>14</span>|<span class="red">&#x2716;</span>|<span>Days</span>-<span>0</span></p>
+						<p><span><strong>13.</strong> Rattata</span>|<span>CP</span>-<span>39</span>|<span>HP</span>-<span>15</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>14.</strong> Weedle</span>|<span>CP</span>-<span>15</span>|<span>HP</span>-<span>13</span>|<span class="red">&#x2716;</span>|<span>Days</span>-<span>0</span></p>
+						<p><span><strong>15.</strong> Zubat</span>|<span>CP</span>-<span>24</span>|<span>HP</span>-<span>14</span>|<span class="red">&#x2716;</span>|<span>Days</span>-<span>0</span></p>
+						<p><span><strong>16.</strong> Weedle</span>|<span>CP</span>-<span>36</span>|<span>HP</span>-<span>21</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>17.</strong> Poliwag</span>|<span>CP</span>-<span>68</span>|<span>HP</span>-<span>21</span>|<span class="red">&#x2716;</span>|<span>Days</span>-<span>0</span></p>
+						<p><span><strong>18.</strong> Goldeen</span>|<span>CP</span>-<span>37</span>|<span>HP</span>-<span>15</span>|<span class="red">&#x2716;</span>|<span>Days</span>-<span>0</span></p>
+						<p><span><strong>19.</strong> Caterpie</span>|<span>CP</span>-<span>22</span>|<span>HP</span>-<span>19</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>20.</strong> Voltorb</span>|<span>CP</span>-<span>10</span>|<span>HP</span>-<span>10</span>|<span class="red">&#x2716;</span>|<span>Days</span>-<span>0</span></p>
+						<p><span><strong>21.</strong> Meowth</span>|<span>CP</span>-<span>28</span>|<span>HP</span>-<span>14</span>|<span class="red">&#x2716;</span>|<span>Days</span>-<span>0</span></p>
+						<p><span><strong>22.</strong> Magnemite</span>|<span>CP</span>-<span>35</span>|<span>HP</span>-<span>10</span>|<span class="red">&#x2716;</span>|<span>Days</span>-<span>0</span></p>
+						<p><span><strong>23.</strong> Magnemite</span>|<span>CP</span>-<span>109</span>|<span>HP</span>-<span>17</span>|<span class="red">&#x2716;</span>|<span>Days</span>-<span>0</span></p>
+						<p><span><strong>24.</strong> Goldeen</span>|<span>CP</span>-<span>41</span>|<span>HP</span>-<span>17</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>25.</strong> Ponyta</span>|<span>CP</span>-<span>18</span>|<span>HP</span>-<span>10</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>26.</strong> Graveler</span>|<span>CP</span>-<span>135</span>|<span>HP</span>-<span>29</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>27.</strong> Poliwag</span>|<span>CP</span>-<span>71</span>|<span>HP</span>-<span>20</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>28.</strong> Horsea</span>|<span>CP</span>-<span>31</span>|<span>HP</span>-<span>11</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>29.</strong> Slowpoke</span>|<span>CP</span>-<span>146</span>|<span>HP</span>-<span>56</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>30.</strong> Zubat</span>|<span>CP</span>-<span>54</span>|<span>HP</span>-<span>23</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>31.</strong> Hitmonchan</span>|<span>CP</span>-<span>151</span>|<span>HP</span>-<span>28</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>32.</strong> Meowth</span>|<span>CP</span>-<span>65</span>|<span>HP</span>-<span>21</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>33.</strong> Voltorb</span>|<span>CP</span>-<span>73</span>|<span>HP</span>-<span>21</span>|<span class="red">&#x2716;</span>|<span>Days</span>-<span>0</span></p>
+						<p><span><strong>34.</strong> Electrode</span>|<span>CP</span>-<span>168</span>|<span>HP</span>-<span>34</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+						<p><span><strong>35.</strong> Magneton</span>|<span>CP</span>-<span>188</span>|<span>HP</span>-<span>28</span>|<span class="green">&#x2714;</span>|<span>Days</span>-<span>1</span></p>
+					</div>
+					<div class="row heading">
+						<div class="col-md-12">
+							<h3>Ran away</h3>
+						</div>
+					</div>
+					<div class="run_away row">
+						<img src="img/ran_away1.png">
+						<img src="img/ran_away2.png">
+					</div>
+					<div class="row heading">
+						<div class="col-md-12">
+							<h3>My team</h3>
+						</div>
+					</div>
+					<div class="my_team row">
+						<div class="row">
+							<div class="col-md-4">
+								<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/082.png">
+								<h4>Magneton</h4>
+								<p><span class="pokemon_type" style="background:#F8D030;">Electric</span><span class="pokemon_type" style="background:#B8B8D0;">Steel</span></p>
+								<p>CP - 188</p>
+							</div>
+							<div class="col-md-4">
+								<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/101.png">
+								<h4>Electrode</h4>
+								<p><span class="pokemon_type" style="background:#F8D030;">Electric</span></p>
+								<p>CP - 168</p>
+							</div>
+							<div class="col-md-4">
+								<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/107.png">
+								<h4>Hitmonchan</h4>
+								<p><span class="pokemon_type" style="background:#C03028;">Fighting</span></p>
+								<p>CP - 151</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/079.png">
+								<h4>Slowpoke</h4>
+								<p><span class="pokemon_type" style="background:#6890F0;">Water</span><span class="pokemon_type" style="background:#F85888;">Psychic</span></p>
+								<p>CP - 146</p>
+							</div>
+							<div class="col-md-4">
+								<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/075.png">
+								<h4>Graveler</h4>
+								<p><span class="pokemon_type" style="background:#B8A038;">Rock</span><span class="pokemon_type" style="background:#E0C068">Ground</span></p>
+								<p>CP - 135</p>
+							</div>
+							<div class="col-md-4">
+								<img src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/133.png">
+								<h4>Eevee</h4>
+								<p><span class="pokemon_type" style="background:#A8A878;">Normal</span></p>
+								<p>CP - 76</p>
+							</div>
+						</div>
+					</div>
+					<div class="row heading">
+						<div class="col-md-12">
+							<h3>Battles</h3>
+						</div>
+					</div>
+					<div class="battles row">
+						<p><span>Wooden Lighthouse</span>|<span>Gym level 3</span>|<span>Team Valor</span></p>
+						<p><span>Goldeen</span>|<span>CP</span>-<span>163</span></p>
+						<p><span>Poliwhirl</span>|<span>CP</span>-<span>192</span></p>
+						<p><span>Rapidash</span>|<span>CP</span>-<span>1297</span></p>
+						<img src="img/gym1.png">
+					</div>
+					<div class="row heading">
+						<div class="col-md-12">
+							<h3>Training</h3>
+						</div>
+					</div>
+					<div class="training row">
+						<p>N/A</p>
+					</div>
+					<div class="row heading">
+						<div class="col-md-12">
+							<h3>Hatched eggs</h3>
+						</div>
+					</div>
+					<div class="hatched_eggs row">
+						<p>N/A</p>
+					</div>
+					<div class="row heading">
+						<div class="col-md-12">
+							<h3>Evolutions</h3>
+						</div>
+					</div>
+					<div class="evolutions row">
+						<p>N/A</p>
+					</div>
+					<div class="row heading">
+						<div class="col-md-12">
+							<h3>Power ups</h3>
+						</div>
+					</div>
+					<div class="power_ups row">
+						<p><span>Magneton</span>|<span>CP</span>-<span>188 &#x2192; 242</span>|<span>HP</span>-<span>28 &#x2192; 32</span></p>
+						<p><span>Electrode</span>|<span>CP</span>-<span>168 &#x2192; 216</span>|<span>HP</span>-<span>34 &#x2192; 38</span></p>
+						<p><span>Hitmonchan</span>|<span>CP</span>-<span>151 &#x2192; 173</span>|<span>HP</span>-<span>28 &#x2192; 30</span></p>
+						<p><span>Slowpoke</span>|<span>CP</span>-<span>146 &#x2192; 163</span>|<span>HP</span>-<span>56 &#x2192; 59</span></p>
+						<p><span>Graveler</span>|<span>CP</span>-<span>135 &#x2192; 155</span>|<span>HP</span>-<span>29 &#x2192; 31</span></p>
+						<p><span>Eevee</span>|<span>CP</span>-<span>76 &#x2192; 92</span>|<span>HP</span>-<span>25 &#x2192; 28</span></p>
+					</div>
+					<div class="row heading">
+						<div class="col-md-12">
+							<h3>Eggs</h3>
+						</div>
+					</div>
+					<div class="eggs row">
+						<p><span>1.0</span>/<span>2.0</span></p>
+						<p><span>4.0</span>/<span>5.0</span></p>
+					</div>
+					<div class="row heading">
+						<div class="col-md-12">
+							<h3>Items</h3>
+						</div>
+					</div>
+					<div class="items row">
+						<p><span>Potion</span>-<span>21</span></p>
+						<p><span>Revive</span>-<span>18</span></p>
+						<p><span>Incense</span>-<span>2</span></p>
+						<p><span>Poke Ball</span>-<span>216</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer" class="row"></div>
+	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	$( document ).ready(function() {
+		$('#pokedex .heading h2 span').click(function() {
+			if ($(this).hasClass('glyphicon-triangle-bottom')) {
+				$(this).removeClass('glyphicon-triangle-bottom');
+				$(this).addClass('glyphicon-triangle-top');
+				$('#pokedex .heading ~ div').slideToggle('slow');
+			} else {
+				$(this).removeClass('glyphicon-triangle-top');
+				$(this).addClass('glyphicon-triangle-bottom');
+				$('#pokedex .heading ~ div').slideToggle('slow');
+			};
+		});
+		$('#day1_trigger').click(function() {
+			if ($(this).hasClass('active')) {
+				$(this).removeClass('active');
+				$('#day1').slideToggle('slow');
+			} else {
+				$(this).addClass('active');
+				$('#day1').slideToggle('slow');
+			};
+		});
+	});
+	</script>
+</body>	
+</html>
